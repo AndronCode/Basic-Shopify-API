@@ -169,10 +169,13 @@ class BasicShopifyAPI implements LoggerAwareInterface
      *
      * @return self
      */
-    public function __construct(bool $private = false)
+    public function __construct(string $ApiKey, string $ApiSecret, bool $private = false)
     {
+        $this->apiKey = $ApiKey;
+        $this->apiSecret = $ApiSecret;
         // Set if app is private or public
         $this->private = $private;
+        
 
         // Create the stack and assign the middleware which attempts to fix redirects
         $stack = HandlerStack::create();
